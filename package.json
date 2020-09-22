@@ -1,0 +1,37 @@
+{
+  "name": "scroll-master",
+  "version": "0.0.1",
+  "description": "A package to help fix items in a scroll container",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "tsc --watch",
+    "build": "tsc",
+    "prepublishOnly": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Robbie-Cook/scroll-master.git"
+  },
+  "keywords": [
+    "scroll",
+    "master",
+    "scroll-master",
+    "scrollmaster"
+  ],
+  "author": "Robbie Cook <robbie@robbie.pw>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Robbie-Cook/scroll-master/issues"
+  },
+  "homepage": "https://github.com/Robbie-Cook/scroll-master#readme",
+  "devDependencies": {
+    "lerna": "^3.22.1",
+    "source-map-loader": "^1.1.0",
+    "ts-loader": "^7.0.5",
+    "typescript": "^4.0.3",
+    "webpack": "^4.44.2",
+    "webpack-cli": "^3.3.12",
+    "webpack-node-externals": "^2.5.2"
+  }
+}
