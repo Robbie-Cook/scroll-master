@@ -25,7 +25,7 @@ function App() {
         `}
         data-sticky-container
       >
-        <div className="scroll-master">
+        <div className="scroll-master" data-margin-top="20px">
           <div
             css={css`
               display: flex;
