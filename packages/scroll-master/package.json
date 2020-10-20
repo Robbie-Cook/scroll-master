@@ -1,13 +1,14 @@
 {
   "name": "scroll-master",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A package to help fix items in a scroll container",
   "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "tsc --watch",
     "build": "tsc",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "preversion": "npm run build"
   },
   "repository": {
     "type": "git",
