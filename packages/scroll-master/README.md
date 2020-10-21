@@ -1,4 +1,4 @@
-<h1 align="center">Welcome to Scroll Master Monorepo 👋</h1>
+<h1 align="center">Welcome to Scroll Master 👋</h1>
 <p>
   <img alt="Version" src="https://img.shields.io/badge/version-0.0.0-blue.svg?cacheSeconds=2592000" />
   <a href="https://github.com/Robbie-Cook/scroll-master#readme" target="_blank">
@@ -12,7 +12,6 @@
   </a>
 </p>
 
-
 ## Install
 
 ```sh
@@ -21,18 +20,24 @@ npm i scroll-master
 
 > A package that helps you with your scrolling things
 
+N.B. Forked from [https://github.com/rgalus/sticky-js](sticky-js).
+
 ## Usage
+
+Check out https://rgalus.github.io/sticky-js/ for a basic example (ofc, replace 'Sticky' with 'ScrollMaster')
 
 ### ES6
 
 ```typescript
-import ScrollMaster from 'scroll-master';
+import ScrollMaster from "scroll-master";
 ```
+
 ### CommonJS
 
 ```typescript
-const { ScrollMaster } = require('scroll-master');
+const { ScrollMaster } = require("scroll-master");
 ```
+
 ### HTML
 
 ```html
@@ -49,8 +54,8 @@ ScrollMaster.default('selector');
 
 👤 **Robbie Cook <robbie@robbie.pw>**
 
-* Website: robbie.pw
-* Github: [@Robbie-Cook](https://github.com/Robbie-Cook)
+- Website: robbie.pw
+- Github: [@Robbie-Cook](https://github.com/Robbie-Cook)
 
 ## 🤝 Contributing
 
@@ -67,5 +72,6 @@ This project is [MIT](https://github.com/Robbie-Cook/scroll-master/blob/master/L
 
 This project was forked from [sticky-js](https://github.com/rgalus/sticky-js)
 
-***
+---
+
 _This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
