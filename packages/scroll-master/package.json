@@ -5,8 +5,8 @@
   "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "tsc --watch",
-    "build": "tsc",
+    "start": "webpack --watch",
+    "build": "webpack",
     "prepublishOnly": "npm run build",
     "preversion": "npm run build"
   },
