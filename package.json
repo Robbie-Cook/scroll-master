@@ -17,8 +17,13 @@
     "scroll-master",
     "scrollmaster"
   ],
+  "workspaces": {
+    "packages": [
+      "packages/scroll-master"
+    ]
+  },
   "author": "Robbie Cook <robbie@robbie.pw>",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/Robbie-Cook/scroll-master/issues"
   },

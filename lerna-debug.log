@@ -1,0 +1,147 @@
+0 silly argv {
+0 silly argv   _: [ 'version' ],
+0 silly argv   'create-release': 'github',
+0 silly argv   createRelease: 'github',
+0 silly argv   'conventional-commits': true,
+0 silly argv   conventionalCommits: true,
+0 silly argv   lernaVersion: '3.22.1',
+0 silly argv   '$0': 'lerna',
+0 silly argv   bump: 'patch'
+0 silly argv }
+1 notice cli v3.22.1
+2 verbose rootPath /Users/Robbie/Repos/scroll-master
+3 info current version 0.0.1
+4 silly isAnythingCommitted
+5 verbose isAnythingCommitted 1
+6 silly currentBranch
+7 verbose currentBranch master
+8 silly remoteBranchExists
+9 silly isBehindUpstream
+10 silly isBehindUpstream master is behind origin/master by 0 commit(s) and ahead by 0
+11 silly hasTags
+12 verbose hasTags true
+13 silly git-describe.sync "v0.0.1-2-g09a9bc1" => {"lastTagName":"v0.0.1","lastVersion":"v0.0.1","refCount":"2","sha":"09a9bc1","isDirty":false}
+14 info Looking for changed packages since v0.0.1
+15 silly checking diff packages/scroll-master
+16 silly found diff in packages/scroll-master/README.md
+16 silly found diff in packages/scroll-master/package-lock.json
+16 silly found diff in packages/scroll-master/package.json
+16 silly found diff in packages/scroll-master/src/index.ts
+16 silly found diff in packages/scroll-master/src/scroll.js
+17 verbose filtered diff [
+17 verbose filtered diff   'packages/scroll-master/README.md',
+17 verbose filtered diff   'packages/scroll-master/package-lock.json',
+17 verbose filtered diff   'packages/scroll-master/package.json',
+17 verbose filtered diff   'packages/scroll-master/src/index.ts',
+17 verbose filtered diff   'packages/scroll-master/src/scroll.js'
+17 verbose filtered diff ]
+18 silly checking diff packages/test
+19 silly found diff in packages/test/.gitignore
+19 silly found diff in packages/test/README.md
+19 silly found diff in packages/test/package-lock.json
+19 silly found diff in packages/test/package.json
+19 silly found diff in packages/test/public/favicon.ico
+19 silly found diff in packages/test/public/index.html
+19 silly found diff in packages/test/public/logo192.png
+19 silly found diff in packages/test/public/logo512.png
+19 silly found diff in packages/test/public/manifest.json
+19 silly found diff in packages/test/public/robots.txt
+19 silly found diff in packages/test/src/App.css
+19 silly found diff in packages/test/src/App.test.tsx
+19 silly found diff in packages/test/src/App.tsx
+19 silly found diff in packages/test/src/index.css
+19 silly found diff in packages/test/src/index.tsx
+19 silly found diff in packages/test/src/logo.svg
+19 silly found diff in packages/test/src/react-app-env.d.ts
+19 silly found diff in packages/test/src/serviceWorker.ts
+19 silly found diff in packages/test/src/setupTests.ts
+19 silly found diff in packages/test/tsconfig.json
+20 verbose filtered diff [
+20 verbose filtered diff   'packages/test/.gitignore',
+20 verbose filtered diff   'packages/test/README.md',
+20 verbose filtered diff   'packages/test/package-lock.json',
+20 verbose filtered diff   'packages/test/package.json',
+20 verbose filtered diff   'packages/test/public/favicon.ico',
+20 verbose filtered diff   'packages/test/public/index.html',
+20 verbose filtered diff   'packages/test/public/logo192.png',
+20 verbose filtered diff   'packages/test/public/logo512.png',
+20 verbose filtered diff   'packages/test/public/manifest.json',
+20 verbose filtered diff   'packages/test/public/robots.txt',
+20 verbose filtered diff   'packages/test/src/App.css',
+20 verbose filtered diff   'packages/test/src/App.test.tsx',
+20 verbose filtered diff   'packages/test/src/App.tsx',
+20 verbose filtered diff   'packages/test/src/index.css',
+20 verbose filtered diff   'packages/test/src/index.tsx',
+20 verbose filtered diff   'packages/test/src/logo.svg',
+20 verbose filtered diff   'packages/test/src/react-app-env.d.ts',
+20 verbose filtered diff   'packages/test/src/serviceWorker.ts',
+20 verbose filtered diff   'packages/test/src/setupTests.ts',
+20 verbose filtered diff   'packages/test/tsconfig.json'
+20 verbose filtered diff ]
+21 verbose updated scroll-master
+22 verbose updated react-test
+23 verbose git-describe undefined => "v0.0.1-2-g09a9bc1"
+24 silly git-describe parsed => {"lastTagName":"v0.0.1","lastVersion":"v0.0.1","refCount":"2","sha":"09a9bc1","isDirty":false}
+25 info execute Creating releases...
+26 silly lifecycle No script for "preversion" in "scroll-master-wrapper", continuing
+27 silly lifecycle No script for "preversion" in "scroll-master", continuing
+28 silly lifecycle No script for "version" in "scroll-master", continuing
+29 silly fixed for scroll-master at /Users/Robbie/Repos/scroll-master/packages/scroll-master
+30 verbose getChangelogConfig using preset "conventional-changelog-angular"
+31 silly npa Result {
+31 silly npa   type: 'tag',
+31 silly npa   registry: true,
+31 silly npa   where: undefined,
+31 silly npa   raw: 'conventional-changelog-angular',
+31 silly npa   name: 'conventional-changelog-angular',
+31 silly npa   escapedName: 'conventional-changelog-angular',
+31 silly npa   scope: undefined,
+31 silly npa   rawSpec: '',
+31 silly npa   saveSpec: null,
+31 silly npa   fetchSpec: 'latest',
+31 silly npa   gitRange: undefined,
+31 silly npa   gitCommittish: undefined,
+31 silly npa   hosted: undefined
+31 silly npa }
+32 verbose getChangelogConfig Attempting to resolve preset "conventional-changelog-angular"
+33 info getChangelogConfig Successfully resolved preset "conventional-changelog-angular"
+34 silly fixed writing new entry: "## [0.0.2](https://github.com/Robbie-Cook/scroll-master/compare/v0.0.1...v0.0.2) (2020-10-20)\n\n**Note:** Version bump only for package scroll-master\n\n\n\n"
+35 verbose fixed wrote /Users/Robbie/Repos/scroll-master/packages/scroll-master/CHANGELOG.md
+36 silly lifecycle No script for "preversion" in "react-test", continuing
+37 silly lifecycle No script for "version" in "react-test", continuing
+38 silly fixed for react-test at /Users/Robbie/Repos/scroll-master/packages/test
+39 silly fixed writing new entry: "## [0.0.2](https://github.com/Robbie-Cook/scroll-master/compare/v0.0.1...v0.0.2) (2020-10-20)\n\n**Note:** Version bump only for package react-test\n\n\n\n"
+40 verbose fixed wrote /Users/Robbie/Repos/scroll-master/packages/test/CHANGELOG.md
+41 silly root for scroll-master-wrapper at /Users/Robbie/Repos/scroll-master
+42 silly root writing new entry: "## [0.0.2](https://github.com/Robbie-Cook/scroll-master/compare/v0.0.1...v0.0.2) (2020-10-20)\n\n**Note:** Version bump only for package scroll-master-wrapper\n\n\n\n"
+43 verbose root wrote /Users/Robbie/Repos/scroll-master/CHANGELOG.md
+44 silly lifecycle No script for "version" in "scroll-master-wrapper", continuing
+45 silly gitAdd [
+45 silly gitAdd   'packages/scroll-master/package.json',
+45 silly gitAdd   'packages/scroll-master/package-lock.json',
+45 silly gitAdd   'packages/scroll-master/CHANGELOG.md',
+45 silly gitAdd   'packages/test/package.json',
+45 silly gitAdd   'packages/test/package-lock.json',
+45 silly gitAdd   'packages/test/CHANGELOG.md',
+45 silly gitAdd   'CHANGELOG.md',
+45 silly gitAdd   'lerna.json'
+45 silly gitAdd ]
+46 silly gitCommit v0.0.2
+47 verbose git [ 'commit', '-m', 'v0.0.2' ]
+48 silly gitTag v0.0.2
+49 verbose git [ 'tag', 'v0.0.2', '-m', 'v0.0.2' ]
+50 silly lifecycle No script for "postversion" in "scroll-master", continuing
+51 silly lifecycle No script for "postversion" in "react-test", continuing
+52 silly lifecycle No script for "postversion" in "scroll-master-wrapper", continuing
+53 info git Pushing tags...
+54 silly gitPush origin master
+55 silly parseGitRepo
+56 verbose git [ 'config', '--get', 'remote.origin.url' ]
+57 silly createGitHubClient
+58 error Error: A GH_TOKEN environment variable is required.
+58 error     at createGitHubClient (/Users/Robbie/Repos/scroll-master/node_modules/@lerna/github-client/lib/github-client.js:17:11)
+58 error     at createClient (/Users/Robbie/Repos/scroll-master/node_modules/@lerna/version/lib/create-release.js:16:14)
+58 error     at createRelease (/Users/Robbie/Repos/scroll-master/node_modules/@lerna/version/lib/create-release.js:25:18)
+58 error     at /Users/Robbie/Repos/scroll-master/node_modules/@lerna/version/index.js:282:9
+58 error     at /Users/Robbie/Repos/scroll-master/node_modules/p-waterfall/index.js:4:73
+58 error     at /Users/Robbie/Repos/scroll-master/node_modules/p-reduce/index.js:16:10
