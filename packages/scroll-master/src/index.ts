@@ -1,8 +1,11 @@
-import Sticky from "./scroll";
+import ScrollMaster from "./scroll";
 
 // Allows import from web
 if (window) {
-  (window as any).ScrollMaster = Sticky;
+  (window as any).ScrollMaster = ScrollMaster;
 }
 
-export default Sticky;
+console.log('hello');
+(window as any).hello = "hi"!
+
+export default ScrollMaster;

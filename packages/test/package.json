@@ -1,6 +1,6 @@
 {
   "name": "react-test",
-  "version": "0.0.4",
+  "version": "0.0.3",
   "private": true,
   "dependencies": {
     "@emotion/core": "^10.0.35",
@@ -15,6 +15,7 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.3",
+    "scroll-master": "file:../scroll-master",
     "typescript": "~3.7.2"
   },
   "scripts": {

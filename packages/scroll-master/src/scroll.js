@@ -1,4 +1,4 @@
-export default class Sticky {
+export default class ScrollMaster {
   /**
    * Sticky instance constructor
    * @constructor
@@ -307,7 +307,6 @@ export default class Sticky {
       }
 
       this.css(element, { position: "", width: "", top: "", left: "" });
-
       if (element.sticky.wrap) {
         this.css(element.parentNode, { display: "", width: "", height: "" });
       }

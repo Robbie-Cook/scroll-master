@@ -29,7 +29,8 @@
   },
   "homepage": "https://github.com/Robbie-Cook/scroll-master#readme",
   "devDependencies": {
-    "lerna": "^3.22.1"
-  },
-  "dependencies": {}
+    "@rollup/plugin-typescript": "^6.0.0",
+    "lerna": "^3.22.1",
+    "rollup": "^2.32.0"
+  }
 }
