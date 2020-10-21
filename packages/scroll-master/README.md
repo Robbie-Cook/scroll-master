@@ -33,10 +33,16 @@ import ScrollMaster from 'scroll-master';
 ```typescript
 const { ScrollMaster } = require('scroll-master');
 ```
-### Website
+### HTML
 
 ```html
 <script src="https://unpkg.com/scroll-master@latest/dist/index.js">
+```
+
+then
+
+```
+ScrollMaster.default('selector');
 ```
 
 ## Author

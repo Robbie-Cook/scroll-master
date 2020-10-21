@@ -23,21 +23,7 @@ npm i scroll-master
 
 ## Usage
 
-### ES6
-
-```typescript
-import ScrollMaster from 'scroll-master';
-```
-### CommonJS
-
-```typescript
-const { ScrollMaster } = require('scroll-master');
-```
-### Website
-
-```html
-<script src="https://unpkg.com/scroll-master@latest/dist/index.js">
-```
+See [https://github.com/Robbie-Cook/scroll-master/packages/scroll-master/README.md](here) for usage instructions
 
 ## Author
 
