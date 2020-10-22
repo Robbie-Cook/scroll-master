@@ -15,7 +15,7 @@ export interface ViewportProps {
  */
 const Viewport: React.FC<ViewportProps> = (props) => {
   React.useEffect(() => {
-    new ScrollMaster(".scroll-master");
+    new ScrollMaster(".scroll-viewport");
   }, []);
   return (
     <div
@@ -27,7 +27,7 @@ const Viewport: React.FC<ViewportProps> = (props) => {
       data-sticky-container
     >
       <div
-        className="scroll-master"
+        className="scroll-viewport"
         data-margin-top="30"
         data-margin-bottom="30"
       >
