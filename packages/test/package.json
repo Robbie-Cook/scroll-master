@@ -13,7 +13,7 @@
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
     "react-scripts": "3.4.4",
-    "scroll-master": "file:../scroll-master",
+    "scroll-master": "^0.1.1",
     "typescript": "~3.7.2"
   },
   "scripts": {
