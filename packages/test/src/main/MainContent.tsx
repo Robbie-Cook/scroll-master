@@ -16,6 +16,14 @@ const MainContent: React.FC<MainContentProps> = (props) => {
   return (
     <React.Fragment>
       <h1>Scroll Master</h1>
+      <iframe
+        src="https://ghbtns.com/github-btn.html?user=Robbie-Cook&repo=scroll-master&type=star&count=true&size=large"
+        frameBorder="0"
+        scrolling="0"
+        width="170"
+        height="30"
+        title="GitHub"
+      ></iframe>
       <h3>
         Scroll Master is a library to help you with your auto-scrolling needs
       </h3>
