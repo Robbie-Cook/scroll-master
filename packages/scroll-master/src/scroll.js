@@ -232,7 +232,7 @@ export default class ScrollMaster {
     this.css(element, { position: "", width: "", top: "", left: "" });
     element.classList.remove("stuck");
 
-    if (this.vp.height < element.sticky.rect.height || !element.sticky.active) {
+    if (!element.sticky.active) {
       return;
     }
 
