@@ -12,16 +12,13 @@
   </a>
 </p>
 
+> A better `position: sticky`
 
-## Install
+Website: https://scrollmaster.robbie.digital
 
-```sh
-npm i scroll-master
-```
+Code: https://github.com/Robbie-Cook/scroll-master/tree/master/packages/test
 
-> A package that helps you with your scrolling things
-
-## Usage
+## Docs
 
 See [https://github.com/Robbie-Cook/scroll-master/packages/scroll-master/README.md](here) for usage instructions
 

@@ -14,7 +14,9 @@
 
 ## Demo
 
-https://scrollmaster.robbie.digital
+Website: https://scrollmaster.robbie.digital
+
+Code: https://github.com/Robbie-Cook/scroll-master/tree/master/packages/test
 
 ## Install
 
@@ -22,7 +24,8 @@ https://scrollmaster.robbie.digital
 npm i scroll-master
 ```
 
-> A package that helps you with your scrolling things
+> A better `position: sticky`
+
 
 N.B. Forked from [https://github.com/rgalus/sticky-js](sticky-js).
 
