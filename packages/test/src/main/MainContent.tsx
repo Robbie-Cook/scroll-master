@@ -15,7 +15,7 @@ export interface MainContentProps {
 const MainContent: React.FC<MainContentProps> = (props) => {
   return (
     <React.Fragment>
-      <h1>Scroll-Master</h1>
+      <h1>Scroll Master</h1>
       <h3>
         Scroll Master is a library to help you with your auto-scrolling needs
       </h3>
