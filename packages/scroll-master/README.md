@@ -26,16 +26,23 @@ N.B. Forked from [https://github.com/rgalus/sticky-js](sticky-js).
 
 Check out https://rgalus.github.io/sticky-js/ for a basic example (ofc, replace 'Sticky' with 'ScrollMaster')
 
-### ES6
+### ES6 / CommonJS
 
 ```typescript
 import ScrollMaster from "scroll-master";
 ```
 
-### CommonJS
+or
 
 ```typescript
-const { ScrollMaster } = require("scroll-master");
+const { default: ScrollMaster } = require("scroll-master");
+```
+
+then, you can call scroll master to keep your item in view
+
+
+```typescript
+ScrollMaster('.selector');
 ```
 
 ### HTML
@@ -46,8 +53,10 @@ const { ScrollMaster } = require("scroll-master");
 
 then
 
-```
+```html
+<script>
 ScrollMaster.default('selector');
+</script>
 ```
 
 ## Author
