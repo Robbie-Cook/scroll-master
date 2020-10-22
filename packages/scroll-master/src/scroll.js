@@ -18,7 +18,7 @@ export default class ScrollMaster {
       marginTop: options.marginTop || 0,
       marginBottom: options.marginBottom || 0,
       stickyFor: options.stickyFor || 0,
-      stickyClass: options.stickyClass || null,
+      stickyClass: options.stickyClass || "stuck",
       stickyContainer: options.stickyContainer || "body",
     };
 
@@ -60,7 +60,7 @@ export default class ScrollMaster {
     element.sticky.active = false;
 
     element.sticky.customStyles =
-      element.getAttribute("data-custom-styles") === "true";
+      element.getAttribute("data-custom-styles") ?? false;
     element.sticky.marginTop =
       parseInt(element.getAttribute("data-margin-top")) ||
       this.options.marginTop;
