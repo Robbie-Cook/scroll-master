@@ -12,6 +12,10 @@
   </a>
 </p>
 
+## Demo
+
+https://scrollmaster.robbie.digital
+
 ## Install
 
 ```sh
