@@ -1,6 +1,6 @@
 {
   "packages": [
-    "packages/scroll-master"
-  ],
-  "version": "independent"
+    "packages/scroll-master",
+    "packages/test"
+  ]
 }

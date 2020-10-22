@@ -6,6 +6,7 @@ import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import ScrollMaster from "scroll-master";
+import MainContent from './main/MainContent';
 
 function App() {
   React.useEffect(() => {
@@ -14,10 +15,13 @@ function App() {
   return (
     <div
       css={css`
-        height: 200vh;
+        min-height: 200vh;
       `}
       className="App"
     >
+      <main>
+        <MainContent />
+      </main>
       <div
         css={css`
           height: 500px;
