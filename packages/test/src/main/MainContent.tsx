@@ -25,7 +25,7 @@ const MainContent: React.FC<MainContentProps> = (props) => {
         title="GitHub"
       ></iframe>
       <h3>
-        Scroll Master is a library to help you with your auto-scrolling needs
+        A better `position: sticky`
       </h3>
       <p>
         This project was forked from{" "}
