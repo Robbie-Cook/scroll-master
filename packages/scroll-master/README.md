@@ -29,10 +29,6 @@ npm i scroll-master
 
 N.B. Forked from [https://github.com/rgalus/sticky-js](sticky-js).
 
-## Usage
-
-Check out https://rgalus.github.io/sticky-js/ for a basic example (ofc, replace 'Sticky' with 'ScrollMaster')
-
 ### ES6 / CommonJS
 
 ```typescript
