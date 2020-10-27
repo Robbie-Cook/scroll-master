@@ -22,7 +22,7 @@ const CustomStyles: React.FC<CustomStylesProps> = (props) => {
   const code = `
     <React.Fragment>
       {/** 
-        * Global css styles
+        * Global css styles (emotion js)
         */}
       <Global styles={css\`
       .stuck {
