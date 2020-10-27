@@ -17,20 +17,26 @@ export interface LiveEditorProps {
  *  A LiveEditor component.
  */
 const Editor: React.FC<LiveEditorProps> = (props) => {
-  const code = prettier.format(
-    props.code,
-    {
-      parser: "babel",
-      plugins: [parser],
-    }
-  );
+  const code = prettier.format(props.code, {
+    parser: "babel",
+    plugins: [parser],
+  });
 
   return (
-    <LiveProvider code={code}>
-      <LiveEditor />
-      <LiveError />
-      <LivePreview />
-    </LiveProvider>
+    <div
+      css={css`
+        /* display: flex; */
+        /* flex-wrap: wrap; */
+      `}
+    >
+      <LiveProvider code={code}>
+        <h3>Example</h3>
+        <LivePreview />
+        <h3>Code Editor</h3>
+        <LiveEditor />
+        <LiveError />
+      </LiveProvider>
+    </div>
   );
 };
 
