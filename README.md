@@ -1,4 +1,4 @@
-<h1 align="center">Welcome to Scroll Master Monorepo 👋</h1>
+<h1 align="center">Welcome to the Scroll Master monorepo 👋</h1>
 <p>
   <img alt="Version" src="https://img.shields.io/badge/version-0.0.0-blue.svg?cacheSeconds=2592000" />
   <a href="https://github.com/Robbie-Cook/scroll-master#readme" target="_blank">

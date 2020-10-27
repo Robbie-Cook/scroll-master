@@ -9,7 +9,7 @@ import ScrollMaster from "scroll-master";
 import MainContent from "./main/MainContent";
 import Ruler from "./Ruler";
 import BasicExample from "./examples/BasicExample";
-import ViewportExample from './examples/ViewportExample';
+import ViewportExample from "./examples/ViewportExample";
 
 function App() {
   return (

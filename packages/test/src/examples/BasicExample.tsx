@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import { css, jsx } from "@emotion/core";
 import React from "react";
+import Editor from '../editor/Editor';
 import ScrollMaster from "scroll-master";
 
 /**
@@ -17,13 +18,12 @@ const BasicExample: React.FC<BasicExampleProps> = (props) => {
   React.useEffect(() => {
     new ScrollMaster(".scroll-master");
   }, []);
-  return (
-    <div
-      css={css`
-        height: 500px;
-        background-color: #3d3d3d;
-        padding: 30px;
-      `}
+
+  const code = `<div style={{
+        height: "500px",
+        backgroundColor: "#3d3d3d",
+        padding: "30px",
+      }}
       data-sticky-container
     >
       <div
@@ -32,10 +32,10 @@ const BasicExample: React.FC<BasicExampleProps> = (props) => {
         data-margin-bottom="30"
       >
         <div
-          css={css`
-            display: flex;
-            justify-content: center;
-          `}
+          style={{
+            display: "flex",
+            justifyContent: "center",
+          }}
         >
           <div>Sticky element</div>
           <div>Sticky element</div>
@@ -45,7 +45,10 @@ const BasicExample: React.FC<BasicExampleProps> = (props) => {
           <div>Sticky element</div>
         </div>
       </div>
-    </div>
+    </div>`;
+
+  return (
+    <Editor code={code} />
   );
 };
 
