@@ -2,6 +2,7 @@
 import { css, jsx } from "@emotion/core";
 import React from "react";
 import ScrollMaster from "scroll-master";
+import Editor from "../editor/Editor";
 
 /**
  * Interface for Viewport props
@@ -18,12 +19,14 @@ const Viewport: React.FC<ViewportProps> = (props) => {
     new ScrollMaster(".scroll-viewport");
   }, []);
   return (
+    <Editor
+      code={`
     <div
-      css={css`
-        height: 200vh;
-        background-color: #3d3d3d;
-        padding: 30px;
-      `}
+      style={{
+        height: "200vh",
+        backgroundColor: "#3d3d3d",
+        padding: "30px",
+      }}
       data-sticky-container
     >
       <div
@@ -32,12 +35,12 @@ const Viewport: React.FC<ViewportProps> = (props) => {
         data-margin-bottom="30"
       >
         <div
-          css={css`
-            display: flex;
-            flex-direction: column;
-            height: 110vh;
-            overflow: hidden;
-          `}
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            height: "110vh",
+            overflow: "hidden",
+          }}
         >
           {(() => {
             const generator = () => <div>Sticky element</div>;
@@ -49,7 +52,8 @@ const Viewport: React.FC<ViewportProps> = (props) => {
           })()}
         </div>
       </div>
-    </div>
+    </div>`}
+    ></Editor>
   );
 };
 
