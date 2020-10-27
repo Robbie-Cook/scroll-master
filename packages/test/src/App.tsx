@@ -11,6 +11,7 @@ import Ruler from "./Ruler";
 import BasicExample from "./examples/BasicExample";
 import ViewportExample from "./examples/ViewportExample";
 import CustomStylesExample from "./examples/CustomStylesExample";
+import StickToBottomExample from './examples/StickToBottomExample';
 
 function App() {
   return (
@@ -60,6 +61,10 @@ function App() {
       <section>
         <h2 id="viewport">custom styles</h2>
         <CustomStylesExample />
+      </section>
+      <section>
+        <h2 id="viewport">stick to bottom</h2>
+        <StickToBottomExample />
       </section>
     </div>
   );
