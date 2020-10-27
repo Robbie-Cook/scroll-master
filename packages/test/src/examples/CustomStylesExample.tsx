@@ -25,8 +25,9 @@ const CustomStyles: React.FC<CustomStylesProps> = (props) => {
         * Global css styles (emotion js)
         */}
       <Global styles={css\`
-      .stuck {
+      .custom-stuck {
         position: fixed;
+        color: red;
       }
     \`} />
     <div style={{
@@ -39,13 +40,13 @@ const CustomStyles: React.FC<CustomStylesProps> = (props) => {
         <div
           className="scroll-master custom-styles"
           data-custom-styles
+          data-sticky-class="custom-stuck"
           data-margin-top="30"
           data-margin-bottom="30"
         >
           <div
             style={{
               display: "flex",
-              justifyContent: "center",
             }}
           >
             <div>Sticky element</div>
