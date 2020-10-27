@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { css, jsx } from "@emotion/core";
+import { css, Global, jsx } from "@emotion/core";
 import React from "react";
 import ScrollMaster from "scroll-master";
 import parser from "prettier/parser-babel";
@@ -29,10 +29,10 @@ const Editor: React.FC<LiveEditorProps> = (props) => {
         /* flex-wrap: wrap; */
       `}
     >
-      <LiveProvider code={code}>
-        <h3>Example</h3>
+      <LiveProvider code={code} scope={{ Global, css }}>
+        <h3>example</h3>
         <LivePreview />
-        <h3>Code Editor</h3>
+        <h3>code editor</h3>
         <LiveEditor />
         <LiveError />
       </LiveProvider>

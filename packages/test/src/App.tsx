@@ -10,6 +10,7 @@ import MainContent from "./main/MainContent";
 import Ruler from "./Ruler";
 import BasicExample from "./examples/BasicExample";
 import ViewportExample from "./examples/ViewportExample";
+import CustomStylesExample from "./examples/CustomStylesExample";
 
 function App() {
   return (
@@ -49,12 +50,16 @@ function App() {
         <MainContent />
       </main>
       <section>
-        <h2 id="basic-example">Basic Example</h2>
+        <h2 id="basic-example">basic example</h2>
         <BasicExample />
       </section>
       <section>
-        <h2 id="viewport">Larger than viewport</h2>
+        <h2 id="viewport">larger than viewport</h2>
         <ViewportExample />
+      </section>
+      <section>
+        <h2 id="viewport">custom styles</h2>
+        <CustomStylesExample />
       </section>
     </div>
   );
