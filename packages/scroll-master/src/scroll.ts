@@ -101,7 +101,7 @@ export default class ScrollMaster {
   /**
    * Function that assign needed variables for sticky element, that are used in future for calculations and other
    * @function
-   * @param {node} element - Element to be rendered
+   * @param element - Element to be rendered
    */
   renderElement(element: StickyElement) {
     // create container for variables needed in future
@@ -147,7 +147,7 @@ export default class ScrollMaster {
   /**
    * Wraps element into placeholder element
    * @function
-   * @param {node} element - Element to be wrapped
+   * @param element - Element to be wrapped
    */
   wrapElement(element: StickyElement) {
     element.insertAdjacentHTML(
@@ -160,7 +160,7 @@ export default class ScrollMaster {
   /**
    * Function that activates element when specified conditions are met and then initalise events
    * @function
-   * @param {Element} element - Element to be activated
+   * @param element - Element to be activated
    */
   activate(element: StickyElement) {
     if (
@@ -193,7 +193,7 @@ export default class ScrollMaster {
   /**
    * Function which is adding onResizeEvents to window listener and assigns function to element as resizeListener
    * @function
-   * @param {node} element - Element for which resize events are initialised
+   * @param element - Element for which resize events are initialised
    */
   initResizeEvents(element: StickyElement) {
     element.sticky.resizeListener = () => this.onResizeEvents(element);
@@ -203,7 +203,7 @@ export default class ScrollMaster {
   /**
    * Removes element listener from resize event
    * @function
-   * @param {node} element - Element from which listener is deleted
+   * @param element - Element from which listener is deleted
    */
   destroyResizeEvents(element: StickyElement) {
     window.removeEventListener("resize", element.sticky.resizeListener);
@@ -212,7 +212,7 @@ export default class ScrollMaster {
   /**
    * Function which is fired when user resize window. It checks if element should be activated or deactivated and then run setPosition function
    * @function
-   * @param {node} element - Element for which event function is fired
+   * @param element - Element for which event function is fired
    */
   onResizeEvents(element: StickyElement) {
     this.vp = this.getViewportSize();
@@ -243,7 +243,7 @@ export default class ScrollMaster {
   /**
    * Function which is adding onScrollEvents to window listener and assigns function to element as scrollListener
    * @function
-   * @param {node} element - Element for which scroll events are initialised
+   * @param element - Element for which scroll events are initialised
    */
   initScrollEvents(element: StickyElement) {
     element.sticky.scrollListener = () => this.onScrollEvents(element);
@@ -253,7 +253,7 @@ export default class ScrollMaster {
   /**
    * Removes element listener from scroll event
    * @function
-   * @param {node} element - Element from which listener is deleted
+   * @param element - Element from which listener is deleted
    */
   destroyScrollEvents(element: StickyElement) {
     window.removeEventListener("scroll", element.sticky.scrollListener);
@@ -262,7 +262,7 @@ export default class ScrollMaster {
   /**
    * Function which is fired when user scroll window. If element is active, function is invoking setPosition function
    * @function
-   * @param {node} element - Element for which event function is fired
+   * @param element - Element for which event function is fired
    */
   onScrollEvents(element: StickyElement) {
     if (element.sticky && element.sticky.active) {
@@ -273,7 +273,7 @@ export default class ScrollMaster {
   /**
    * Main function for the library. Here are some condition calculations and css appending for sticky element when user scroll window
    * @function
-   * @param {node} element - Element that will be positioned if it's active
+   * @param element - Element that will be positioned if it's active
    */
   setPosition(element: StickyElement) {
     this.css(element, { position: "", width: "", top: "", left: "" });
@@ -395,7 +395,7 @@ export default class ScrollMaster {
   /**
    * Function that returns container element in which sticky element is stuck (if is not specified, then it's stuck to body)
    * @function
-   * @param {node} element - Element which sticky container are looked for
+   * @param element - Element which sticky container are looked for
    * @return {node} element - Sticky container
    */
   getStickyContainer(element: StickyElement) {
@@ -418,7 +418,7 @@ export default class ScrollMaster {
   /**
    * Function that returns element rectangle & position (width, height, top, left)
    * @function
-   * @param {node} element - Element which position & rectangle are returned
+   * @param element - Element which position & rectangle are returned
    * @return {object}
    */
   getRectangle(element: StickyElement): Rect {
@@ -479,8 +479,8 @@ export default class ScrollMaster {
   /**
    * Helper function for loops
    * @helper
-   * @param {array}
-   * @param {function} callback - Callback function (no need for explanation)
+   * @param
+   * @param callback - Callback function (no need for explanation)
    */
   forEach(
     array: string | any[] | NodeListOf<Element>,
@@ -499,8 +499,8 @@ export default class ScrollMaster {
   /**
    * Helper function to add/remove css properties for specified element.
    * @helper
-   * @param {node} element - DOM element
-   * @param {object} properties - CSS properties that will be added/removed from specified element
+   * @param element - DOM element
+   * @param properties - CSS properties that will be added/removed from specified element
    */
   css(
     element: HTMLElement | null,
