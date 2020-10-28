@@ -25,9 +25,9 @@ const StickToBottomExample: React.FC<StickToBottomExampleProps> = (props) => {
         padding: "30px",
       }}
       data-sticky-container
-      data-sticky-position="bottom"
-    >
+      >
       <div
+        data-sticky-position="bottom"
         className="scroll-master"
         data-margin-top="30"
         data-margin-bottom="30"
