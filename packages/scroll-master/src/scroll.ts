@@ -105,38 +105,32 @@ export default class ScrollMaster {
    */
   renderElement(element: StickyElement) {
     // create container for variables needed in future
-    element.sticky = {};
+    // @ts-expect-error
+    element.sticky = {
+      active: false,
+      customStyles: !!element.getAttribute("data-custom-styles") ?? false,
+      marginTop:
+        parseInt(element.getAttribute("data-margin-top") ?? "") ||
+        this.options.marginTop,
+      marginBottom:
+        parseInt(element.getAttribute("data-margin-bottom") ?? "") ||
+        this.options.marginBottom,
+      stickyFor:
+        parseInt(element.getAttribute("data-sticky-for") ?? "") ||
+        this.options.stickyFor,
+      stickyClass: element.getAttribute("data-sticky-class") ||
+        this.options.stickyClass,
+      wrap: element.hasAttribute("data-sticky-wrap") ? true : this.options.wrap,
+      position: element.hasAttribute("data-sticky-position")
+        ? (element.getAttribute("data-sticky-position") as "top" | "bottom")
+        : this.options.stickyPosition ?? "top",
+      stickyContainer: this.options.stickyContainer,
+      rect: this.getRectangle(element),
+      container: this.getStickyContainer(element)
+    };
 
-    // set default variables
-    element.sticky.active = false;
-
-    element.sticky.customStyles =
-      !!element.getAttribute("data-custom-styles") ?? false;
-    element.sticky.marginTop =
-      parseInt(element.getAttribute("data-margin-top") ?? "") ||
-      this.options.marginTop;
-    element.sticky.marginBottom =
-      parseInt(element.getAttribute("data-margin-bottom") ?? "") ||
-      this.options.marginBottom;
-    element.sticky.stickyFor =
-      parseInt(element.getAttribute("data-sticky-for") ?? "") ||
-      this.options.stickyFor;
-    element.sticky.stickyClass =
-      element.getAttribute("data-sticky-class") || this.options.stickyClass;
-    element.sticky.wrap = element.hasAttribute("data-sticky-wrap")
-      ? true
-      : this.options.wrap;
-    element.sticky.position = element.hasAttribute("data-sticky-position")
-      ? (element.getAttribute("data-sticky-position") as "top" | "bottom")
-      : this.options.stickyPosition ?? "top";
-    // @todo attribute for stickyContainer
-    // element.sticky.stickyContainer = element.getAttribute('data-sticky-container') || this.options.stickyContainer;
-    element.sticky.stickyContainer = this.options.stickyContainer;
-
-    element.sticky.container = this.getStickyContainer(element);
     element.sticky.container.rect = this.getRectangle(element.sticky.container);
 
-    element.sticky.rect = this.getRectangle(element);
 
     // fix when element is image that has not yet loaded and width, height = 0
     if (element.tagName.toLowerCase() === "img") {
