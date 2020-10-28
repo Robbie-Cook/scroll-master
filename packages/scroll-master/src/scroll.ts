@@ -131,7 +131,6 @@ export default class ScrollMaster {
 
     element.sticky.container.rect = this.getRectangle(element.sticky.container);
 
-
     // fix when element is image that has not yet loaded and width, height = 0
     if (element.tagName.toLowerCase() === "img") {
       element.onload = () => (element.sticky.rect = this.getRectangle(element));
