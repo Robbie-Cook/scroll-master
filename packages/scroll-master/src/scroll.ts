@@ -1,11 +1,30 @@
+export type Options = {
+  wrap?: any;
+  wrapWith?: any;
+  marginTop?: any;
+  marginBottom?: any;
+  stickyFor?: any;
+  stickyClass?: any;
+  stickyContainer?: any;
+};
+
+export type StickyElement = HTMLElement & { sticky: any };
+
 export default class ScrollMaster {
+  selector: string;
+  elements: HTMLElement[];
+  vp: { width: number; height: number };
+  body: HTMLBodyElement | null;
+  options: Options;
+  scrollTop?: number;
+
   /**
    * Sticky instance constructor
    * @constructor
    * @param {string} selector - Selector which we can find elements
    * @param {string} options - Global options for sticky elements (could be overwritten by data-{option}="" attributes)
    */
-  constructor(selector = "", options = {}) {
+  constructor(selector: string = "", options: Options = {}) {
     this.selector = selector;
     this.elements = [];
 
@@ -42,7 +61,7 @@ export default class ScrollMaster {
         clearInterval(pageLoaded);
 
         const elements = document.querySelectorAll(this.selector);
-        this.forEach(elements, (element) => this.renderElement(element));
+        this.forEach(elements, (element: any) => this.renderElement(element));
       }
     }, 10);
   }
@@ -52,7 +71,7 @@ export default class ScrollMaster {
    * @function
    * @param {node} element - Element to be rendered
    */
-  renderElement(element) {
+  renderElement(element: StickyElement) {
     // create container for variables needed in future
     element.sticky = {};
 
@@ -62,13 +81,13 @@ export default class ScrollMaster {
     element.sticky.customStyles =
       element.getAttribute("data-custom-styles") ?? false;
     element.sticky.marginTop =
-      parseInt(element.getAttribute("data-margin-top")) ||
+      parseInt(element.getAttribute("data-margin-top") ?? "") ||
       this.options.marginTop;
     element.sticky.marginBottom =
-      parseInt(element.getAttribute("data-margin-bottom")) ||
+      parseInt(element.getAttribute("data-margin-bottom") ?? "") ||
       this.options.marginBottom;
     element.sticky.stickyFor =
-      parseInt(element.getAttribute("data-sticky-for")) ||
+      parseInt(element.getAttribute("data-sticky-for") ?? "") ||
       this.options.stickyFor;
     element.sticky.stickyClass =
       element.getAttribute("data-sticky-class") || this.options.stickyClass;
@@ -102,12 +121,12 @@ export default class ScrollMaster {
    * @function
    * @param {node} element - Element to be wrapped
    */
-  wrapElement(element) {
+  wrapElement(element: StickyElement) {
     element.insertAdjacentHTML(
       "beforebegin",
       element.getAttribute("data-sticky-wrapWith") || this.options.wrapWith
     );
-    element.previousSibling.appendChild(element);
+    element.previousSibling?.appendChild(element);
   }
 
   /**
@@ -115,7 +134,7 @@ export default class ScrollMaster {
    * @function
    * @param {Element} element - Element to be activated
    */
-  activate(element) {
+  activate(element: StickyElement) {
     if (
       element.sticky.rect.top + element.sticky.rect.height <
         element.sticky.container.rect.top +
@@ -148,7 +167,7 @@ export default class ScrollMaster {
    * @function
    * @param {node} element - Element for which resize events are initialised
    */
-  initResizeEvents(element) {
+  initResizeEvents(element: StickyElement) {
     element.sticky.resizeListener = () => this.onResizeEvents(element);
     window.addEventListener("resize", element.sticky.resizeListener);
   }
@@ -158,7 +177,7 @@ export default class ScrollMaster {
    * @function
    * @param {node} element - Element from which listener is deleted
    */
-  destroyResizeEvents(element) {
+  destroyResizeEvents(element: StickyElement) {
     window.removeEventListener("resize", element.sticky.resizeListener);
   }
 
@@ -167,7 +186,7 @@ export default class ScrollMaster {
    * @function
    * @param {node} element - Element for which event function is fired
    */
-  onResizeEvents(element) {
+  onResizeEvents(element: StickyElement) {
     this.vp = this.getViewportSize();
 
     element.sticky.rect = this.getRectangle(element);
@@ -198,7 +217,7 @@ export default class ScrollMaster {
    * @function
    * @param {node} element - Element for which scroll events are initialised
    */
-  initScrollEvents(element) {
+  initScrollEvents(element: StickyElement) {
     element.sticky.scrollListener = () => this.onScrollEvents(element);
     window.addEventListener("scroll", element.sticky.scrollListener);
   }
@@ -208,7 +227,7 @@ export default class ScrollMaster {
    * @function
    * @param {node} element - Element from which listener is deleted
    */
-  destroyScrollEvents(element) {
+  destroyScrollEvents(element: StickyElement) {
     window.removeEventListener("scroll", element.sticky.scrollListener);
   }
 
@@ -217,7 +236,7 @@ export default class ScrollMaster {
    * @function
    * @param {node} element - Element for which event function is fired
    */
-  onScrollEvents(element) {
+  onScrollEvents(element: StickyElement) {
     if (element.sticky && element.sticky.active) {
       this.setPosition(element);
     }
@@ -228,9 +247,9 @@ export default class ScrollMaster {
    * @function
    * @param {node} element - Element that will be positioned if it's active
    */
-  setPosition(element) {
+  setPosition(element: StickyElement) {
     this.css(element, { position: "", width: "", top: "", left: "" });
-    element.classList.remove("stuck");
+    // element.classList.remove("stuck");
 
     if (!element.sticky.active) {
       return;
@@ -241,7 +260,7 @@ export default class ScrollMaster {
     }
 
     if (element.sticky.wrap) {
-      this.css(element.parentNode, {
+      this.css(element.parentElement, {
         display: "block",
         width: element.sticky.rect.width + "px",
         height: element.sticky.rect.height + "px",
@@ -264,8 +283,8 @@ export default class ScrollMaster {
         element.classList.add(element.sticky.stickyClass);
       }
     } else if (
-      this.scrollTop >
-      element.sticky.rect.top - element.sticky.marginTop
+      this.scrollTop &&
+      this.scrollTop > element.sticky.rect.top - element.sticky.marginTop
     ) {
       if (!element.sticky.customStyles) {
         this.css(element, {
@@ -308,7 +327,7 @@ export default class ScrollMaster {
 
       this.css(element, { position: "", width: "", top: "", left: "" });
       if (element.sticky.wrap) {
-        this.css(element.parentNode, { display: "", width: "", height: "" });
+        this.css(element.parentElement, { display: "", width: "", height: "" });
       }
     }
   }
@@ -318,7 +337,7 @@ export default class ScrollMaster {
    * @function
    */
   update() {
-    this.forEach(this.elements, (element) => {
+    this.forEach(this.elements, (element: StickyElement) => {
       element.sticky.rect = this.getRectangle(element);
       element.sticky.container.rect = this.getRectangle(
         element.sticky.container
@@ -337,7 +356,7 @@ export default class ScrollMaster {
     window.removeEventListener("load", this.updateScrollTopPosition);
     window.removeEventListener("scroll", this.updateScrollTopPosition);
 
-    this.forEach(this.elements, (element) => {
+    this.forEach(this.elements, (element: StickyElement) => {
       this.destroyResizeEvents(element);
       this.destroyScrollEvents(element);
       delete element.sticky;
@@ -350,15 +369,18 @@ export default class ScrollMaster {
    * @param {node} element - Element which sticky container are looked for
    * @return {node} element - Sticky container
    */
-  getStickyContainer(element) {
-    let container = element.parentNode;
+  getStickyContainer(element: StickyElement) {
+    let container = element.parentElement;
 
     while (
-      !container.hasAttribute("data-sticky-container") &&
-      !container.parentNode.querySelector(element.sticky.stickyContainer) &&
+      !container?.hasAttribute("data-sticky-container") &&
+      !container?.parentElement?.querySelector(
+        element.sticky.stickyContainer
+      ) &&
       container !== this.body
     ) {
-      container = container.parentNode;
+      // @ts-expect-error
+      container = container?.parentNode ?? null;
     }
 
     return container;
@@ -370,7 +392,7 @@ export default class ScrollMaster {
    * @param {node} element - Element which position & rectangle are returned
    * @return {object}
    */
-  getRectangle(element) {
+  getRectangle(element: StickyElement) {
     this.css(element, { position: "", width: "", top: "", left: "" });
 
     const width = Math.max(
@@ -390,7 +412,7 @@ export default class ScrollMaster {
     do {
       top += element.offsetTop || 0;
       left += element.offsetLeft || 0;
-      element = element.offsetParent;
+      element = element.offsetParent as StickyElement;
     } while (element);
 
     return { top, left, width, height };
@@ -421,7 +443,7 @@ export default class ScrollMaster {
    */
   updateScrollTopPosition() {
     this.scrollTop =
-      (window.pageYOffset || document.scrollTop) - (document.clientTop || 0) ||
+      (window.pageYOffset || document.body.scrollTop) - (document.body.clientTop || 0) ||
       0;
   }
 
@@ -431,7 +453,15 @@ export default class ScrollMaster {
    * @param {array}
    * @param {function} callback - Callback function (no need for explanation)
    */
-  forEach(array, callback) {
+  forEach(
+    array: string | any[] | NodeListOf<Element>,
+    callback: {
+      (element: any): void;
+      (element: StickyElement): void;
+      (element: StickyElement): void;
+      (arg0: any): void;
+    }
+  ) {
     for (let i = 0, len = array.length; i < len; i++) {
       callback(array[i]);
     }
@@ -443,9 +473,22 @@ export default class ScrollMaster {
    * @param {node} element - DOM element
    * @param {object} properties - CSS properties that will be added/removed from specified element
    */
-  css(element, properties) {
+  css(
+    element: HTMLElement | null,
+    properties: {
+      [x: string]: any;
+      position?: string;
+      width?: string;
+      top?: string;
+      left?: string;
+      display?: string;
+      height?: string;
+      hasOwnProperty?: any;
+    }
+  ) {
     for (let property in properties) {
-      if (properties.hasOwnProperty(property)) {
+      if (properties.hasOwnProperty(property) && element) {
+        // @ts-expect-error
         element.style[property] = properties[property];
       }
     }
