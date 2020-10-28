@@ -1,4 +1,4 @@
-import ScrollMaster from "./scroll";
+import ScrollMaster from "./scroll/scroll";
 
 export { ScrollMaster };
 export default ScrollMaster;
