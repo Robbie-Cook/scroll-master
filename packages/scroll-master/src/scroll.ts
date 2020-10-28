@@ -219,7 +219,7 @@ export default class ScrollMaster {
    * @function
    * @param element - Element for which event function is fired
    */
-  onResizeEvents(element: StickyElement): void {
+  onResizeEvents(element: StickyElement) {
     this.vp = this.getViewportSize();
 
     element.sticky.rect = this.getRectangle(element);
@@ -250,7 +250,7 @@ export default class ScrollMaster {
    * @function
    * @param element - Element for which scroll events are initialised
    */
-  initScrollEvents(element: StickyElement): void {
+  initScrollEvents(element: StickyElement) {
     element.sticky.scrollListener = () => this.onScrollEvents(element);
     window.addEventListener("scroll", element.sticky.scrollListener);
   }
@@ -260,7 +260,7 @@ export default class ScrollMaster {
    * @function
    * @param element - Element from which listener is deleted
    */
-  destroyScrollEvents(element: StickyElement): void {
+  destroyScrollEvents(element: StickyElement) {
     window.removeEventListener("scroll", element.sticky.scrollListener);
   }
 
@@ -269,7 +269,7 @@ export default class ScrollMaster {
    * @function
    * @param element - Element for which event function is fired
    */
-  onScrollEvents(element: StickyElement): void {
+  onScrollEvents(element: StickyElement) {
     if (element.sticky && element.sticky.active) {
       this.setPosition(element);
     }
@@ -280,7 +280,7 @@ export default class ScrollMaster {
    * @function
    * @param element - Element that will be positioned if it's active
    */
-  setPosition(element: StickyElement): void {
+  setPosition(element: StickyElement) {
     this.css(element, { position: "", width: "", top: "", left: "" });
     // element.classList.remove("stuck");
 
@@ -455,8 +455,9 @@ export default class ScrollMaster {
   /**
    * Function that returns viewport dimensions
    * @function
+   * @return {object}
    */
-  getViewportSize(): { width: number; height: number } {
+  getViewportSize() {
     return {
       width: Math.max(
         document.documentElement.clientWidth,
@@ -474,7 +475,7 @@ export default class ScrollMaster {
    * @function
    * @return {number}
    */
-  updateScrollTopPosition(): void {
+  updateScrollTopPosition() {
     this.scrollTop =
       (window.pageYOffset || document.body.scrollTop) -
         (document.body.clientTop || 0) || 0;
@@ -494,7 +495,7 @@ export default class ScrollMaster {
       (element: StickyElement): void;
       (arg0: any): void;
     }
-  ): void {
+  ) {
     for (let i = 0, len = array.length; i < len; i++) {
       callback(array[i]);
     }
@@ -518,9 +519,9 @@ export default class ScrollMaster {
       height?: string;
       hasOwnProperty?: any;
     }
-  ): void {
-    for (const property in properties) {
-      if (properties.property && element) {
+  ) {
+    for (let property in properties) {
+      if (properties.hasOwnProperty(property) && element) {
         // @ts-expect-error
         element.style[property] = properties[property];
       }
