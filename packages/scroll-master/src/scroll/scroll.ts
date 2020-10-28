@@ -520,7 +520,7 @@ export default class ScrollMaster {
       hasOwnProperty?: any;
     }
   ) {
-    for (let property in properties) {
+    for (const property in properties) {
       if (properties.hasOwnProperty(property) && element) {
         // @ts-expect-error
         element.style[property] = properties[property];
