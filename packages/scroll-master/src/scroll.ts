@@ -1,3 +1,5 @@
+import merge from "lodash/merge";
+
 export type Options = {
   wrap?: any;
   wrapWith?: any;
@@ -31,15 +33,15 @@ export default class ScrollMaster {
     this.vp = this.getViewportSize();
     this.body = document.querySelector("body");
 
-    this.options = {
-      wrap: options.wrap || false,
-      wrapWith: options.wrapWith || "<span></span>",
-      marginTop: options.marginTop || 0,
-      marginBottom: options.marginBottom || 0,
-      stickyFor: options.stickyFor || 0,
-      stickyClass: options.stickyClass || "stuck",
-      stickyContainer: options.stickyContainer || "body",
-    };
+    this.options = merge(options, {
+      wrap: false,
+      wrapWith: "<span></span>",
+      marginTop: 0,
+
+      stickyFor: 0,
+      stickyClass: "stuck",
+      stickyContainer: "body",
+    });
 
     this.updateScrollTopPosition = this.updateScrollTopPosition.bind(this);
 
@@ -443,8 +445,8 @@ export default class ScrollMaster {
    */
   updateScrollTopPosition() {
     this.scrollTop =
-      (window.pageYOffset || document.body.scrollTop) - (document.body.clientTop || 0) ||
-      0;
+      (window.pageYOffset || document.body.scrollTop) -
+        (document.body.clientTop || 0) || 0;
   }
 
   /**
