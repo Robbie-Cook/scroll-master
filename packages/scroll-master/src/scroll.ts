@@ -1,16 +1,51 @@
 import merge from "lodash/merge";
 
+export type Rect = {
+  width: number;
+  top: number;
+  left: number;
+  height: number;
+};
+
+/**
+ * Options that can be sent via constructor
+ */
 export type Options = {
-  wrap?: any;
+  wrap?: boolean;
   wrapWith?: any;
   marginTop?: any;
   marginBottom?: any;
   stickyFor?: any;
   stickyClass?: any;
   stickyContainer?: any;
+  stickyPosition?: "top" | "bottom";
 };
 
-export type StickyElement = HTMLElement & { sticky: any };
+/**
+ * Options only settable with `data-` attributes
+ */
+export type DataAttrOptions = {
+  active: boolean;
+  customStyles: boolean;
+  stickyPosition?: "top" | "bottom";
+};
+
+export type StickyElement = HTMLElement & {
+  sticky: Options & {
+    /**
+     * Whether to stick to top or bottom
+     */
+    position: "top" | "bottom";
+    customStyles: DataAttrOptions["customStyles"];
+    container: Options["stickyContainer"];
+    active: boolean;
+    rect: Rect;
+    scrollListener: any;
+    resizeEvent: any;
+    scrollEvent: any;
+    resizeListener: any;
+  };
+};
 
 export default class ScrollMaster {
   selector: string;
@@ -23,8 +58,8 @@ export default class ScrollMaster {
   /**
    * Sticky instance constructor
    * @constructor
-   * @param {string} selector - Selector which we can find elements
-   * @param {string} options - Global options for sticky elements (could be overwritten by data-{option}="" attributes)
+   * @param selector - Selector which we can find elements
+   * @param options - Global options for sticky elements (could be overwritten by data-{option}="" attributes)
    */
   constructor(selector: string = "", options: Options = {}) {
     this.selector = selector;
@@ -33,7 +68,7 @@ export default class ScrollMaster {
     this.vp = this.getViewportSize();
     this.body = document.querySelector("body");
 
-    this.options = merge(options, {
+    this.options = merge<Options, Options>(options, {
       wrap: false,
       wrapWith: "<span></span>",
       marginTop: 0,
@@ -76,7 +111,7 @@ export default class ScrollMaster {
     element.sticky.active = false;
 
     element.sticky.customStyles =
-      element.getAttribute("data-custom-styles") ?? false;
+      !!element.getAttribute("data-custom-styles") ?? false;
     element.sticky.marginTop =
       parseInt(element.getAttribute("data-margin-top") ?? "") ||
       this.options.marginTop;
@@ -91,6 +126,9 @@ export default class ScrollMaster {
     element.sticky.wrap = element.hasAttribute("data-sticky-wrap")
       ? true
       : this.options.wrap;
+    element.sticky.position = element.hasAttribute("data-sticky-position")
+      ? (element.getAttribute("data-sticky-position") as "top" | "bottom")
+      : this.options.stickyPosition ?? "top";
     // @todo attribute for stickyContainer
     // element.sticky.stickyContainer = element.getAttribute('data-sticky-container') || this.options.stickyContainer;
     element.sticky.stickyContainer = this.options.stickyContainer;
@@ -356,6 +394,7 @@ export default class ScrollMaster {
     this.forEach(this.elements, (element: StickyElement) => {
       this.destroyResizeEvents(element);
       this.destroyScrollEvents(element);
+      // @ts-expect-error
       delete element.sticky;
     });
   }
@@ -389,7 +428,7 @@ export default class ScrollMaster {
    * @param {node} element - Element which position & rectangle are returned
    * @return {object}
    */
-  getRectangle(element: StickyElement) {
+  getRectangle(element: StickyElement): Rect {
     this.css(element, { position: "", width: "", top: "", left: "" });
 
     const width = Math.max(
