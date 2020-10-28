@@ -57,10 +57,10 @@ export default class ScrollMaster {
    * @function
    */
   run() {
-    document.addEventListener('load', () => {
-        const elements = document.querySelectorAll(this.selector);
-        this.forEach(elements, (element: any) => this.renderElement(element));
-    })
+    window.addEventListener("load", () => {
+      const elements = document.querySelectorAll(this.selector);
+      this.forEach(elements, (element: any) => this.renderElement(element));
+    });
   }
 
   /**
