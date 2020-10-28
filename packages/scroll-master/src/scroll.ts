@@ -61,7 +61,7 @@ export default class ScrollMaster {
    * @param selector - Selector which we can find elements
    * @param options - Global options for sticky elements (could be overwritten by data-{option}="" attributes)
    */
-  constructor(selector: string = "", options: Options = {}) {
+  constructor(selector = "", options: Options = {}) {
     this.selector = selector;
     this.elements = [];
 
@@ -91,8 +91,8 @@ export default class ScrollMaster {
    * Function that waits for page to be fully loaded and then renders & activates every sticky element found with specified selector
    * @function
    */
-  run() {
-    window.addEventListener("load", () => {
+  run(): void {
+    document.addEventListener("DOMContentLoaded", () => {
       const elements = document.querySelectorAll(this.selector);
       this.forEach(elements, (element: any) => this.renderElement(element));
     });
@@ -103,8 +103,15 @@ export default class ScrollMaster {
    * @function
    * @param element - Element to be rendered
    */
-  renderElement(element: StickyElement) {
-    // create container for variables needed in future
+  renderElement(element: StickyElement): void {
+    let position: "top" | "bottom" = "top";
+    if (
+      element.hasAttribute("data-sticky-position") &&
+      element.getAttribute("data-sticky-position") === "bottom"
+    ) {
+      position = "bottom";
+    }
+
     // @ts-expect-error
     element.sticky = {
       active: false,
@@ -118,15 +125,13 @@ export default class ScrollMaster {
       stickyFor:
         parseInt(element.getAttribute("data-sticky-for") ?? "") ||
         this.options.stickyFor,
-      stickyClass: element.getAttribute("data-sticky-class") ||
-        this.options.stickyClass,
+      stickyClass:
+        element.getAttribute("data-sticky-class") || this.options.stickyClass,
       wrap: element.hasAttribute("data-sticky-wrap") ? true : this.options.wrap,
-      position: element.hasAttribute("data-sticky-position")
-        ? (element.getAttribute("data-sticky-position") as "top" | "bottom")
-        : this.options.stickyPosition ?? "top",
+      position,
       stickyContainer: this.options.stickyContainer,
       rect: this.getRectangle(element),
-      container: this.getStickyContainer(element)
+      container: this.getStickyContainer(element),
     };
 
     element.sticky.container.rect = this.getRectangle(element.sticky.container);
@@ -149,7 +154,7 @@ export default class ScrollMaster {
    * @function
    * @param element - Element to be wrapped
    */
-  wrapElement(element: StickyElement) {
+  wrapElement(element: StickyElement): void {
     element.insertAdjacentHTML(
       "beforebegin",
       element.getAttribute("data-sticky-wrapWith") || this.options.wrapWith
@@ -162,7 +167,7 @@ export default class ScrollMaster {
    * @function
    * @param element - Element to be activated
    */
-  activate(element: StickyElement) {
+  activate(element: StickyElement): void {
     if (
       element.sticky.rect.top + element.sticky.rect.height <
         element.sticky.container.rect.top +
@@ -195,7 +200,7 @@ export default class ScrollMaster {
    * @function
    * @param element - Element for which resize events are initialised
    */
-  initResizeEvents(element: StickyElement) {
+  initResizeEvents(element: StickyElement): void {
     element.sticky.resizeListener = () => this.onResizeEvents(element);
     window.addEventListener("resize", element.sticky.resizeListener);
   }
@@ -205,7 +210,7 @@ export default class ScrollMaster {
    * @function
    * @param element - Element from which listener is deleted
    */
-  destroyResizeEvents(element: StickyElement) {
+  destroyResizeEvents(element: StickyElement): void {
     window.removeEventListener("resize", element.sticky.resizeListener);
   }
 
