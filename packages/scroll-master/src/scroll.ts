@@ -57,15 +57,10 @@ export default class ScrollMaster {
    * @function
    */
   run() {
-    // wait for page to be fully loaded
-    const pageLoaded = setInterval(() => {
-      if (document.readyState === "complete") {
-        clearInterval(pageLoaded);
-
+    document.addEventListener('load', () => {
         const elements = document.querySelectorAll(this.selector);
         this.forEach(elements, (element: any) => this.renderElement(element));
-      }
-    }, 10);
+    })
   }
 
   /**
