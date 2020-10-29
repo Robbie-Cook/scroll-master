@@ -1,4 +1,5 @@
 import merge from "lodash/merge";
+import MagicMemo from "magic-memo";
 
 export type Rect = {
   width: number;
@@ -276,14 +277,9 @@ export default class ScrollMaster {
   }
 
   /**
-   * Main function for the library. Here are some condition calculations and css appending for sticky element when user scroll window
-   * @function
-   * @param element - Element that will be positioned if it's active
+   * Code to initialise the position
    */
-  setPosition(element: StickyElement) {
-    this.css(element, { position: "", width: "", top: "", left: "" });
-    // element.classList.remove("stuck");
-
+  private initPosition(element: StickyElement): void {
     if (!element.sticky.active) {
       return;
     }
@@ -298,6 +294,46 @@ export default class ScrollMaster {
         width: element.sticky.rect.width + "px",
         height: element.sticky.rect.height + "px",
       });
+    }
+  }
+
+  /**
+   * Set the position for sticky-bottom
+   */
+  private setStickyBottomPosition(element: StickyElement): void {
+    this.initPosition(element);
+    
+    
+    const stickyContainer = this.getStickyContainer(element);
+    let bottom = "0px";
+    if (stickyContainer) {
+      const stickyContainerBox = this.getRectangle(stickyContainer);
+      const elementBox = this.getRectangle(element);
+
+      const bottomY = stickyContainerBox.top + stickyContainerBox.height;
+      const currentYPosition = Math.ceil(window.scrollY) + window.innerHeight;
+      console.log('hello', bottomY, currentYPosition);
+      
+      if (currentYPosition > bottomY) {
+        bottom = `${currentYPosition - bottomY}px`;
+      }
+    }
+
+    this.css(element, { position: "fixed", bottom });
+  }
+
+  /**
+   * Main function for the library. Here are some condition calculations and css appending for sticky element when user scroll window
+   * @function
+   * @param element - Element that will be positioned if it's active
+   */
+  setPosition(element: StickyElement): void {
+    this.css(element, { position: "", width: "", top: "", left: "" });
+
+    this.initPosition(element);
+
+    if (element.sticky.position === "bottom") {
+      return this.setStickyBottomPosition(element);
     }
 
     if (
@@ -426,7 +462,7 @@ export default class ScrollMaster {
    * @param element - Element which position & rectangle are returned
    * @return {object}
    */
-  getRectangle(element: StickyElement): Rect {
+  getRectangle = (element: StickyElement | HTMLElement): Rect => {
     this.css(element, { position: "", width: "", top: "", left: "" });
 
     const width = Math.max(
@@ -450,7 +486,7 @@ export default class ScrollMaster {
     } while (element);
 
     return { top, left, width, height };
-  }
+  };
 
   /**
    * Function that returns viewport dimensions

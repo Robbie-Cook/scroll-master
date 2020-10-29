@@ -41,6 +41,7 @@
   "gitHead": "6eda4aac98be6ee74e7c188df250d1a1e92cc889",
   "dependencies": {
     "@types/lodash": "^4.14.162",
-    "lodash": "^4.17.20"
+    "lodash": "^4.17.20",
+    "magic-memo": "^1.0.3"
   }
 }
