@@ -312,10 +312,9 @@ export default class ScrollMaster {
 
       const bottomY = stickyContainerBox.top + stickyContainerBox.height;
       const currentYPosition = Math.ceil(window.scrollY) + window.innerHeight;
-      console.log('hello', bottomY, currentYPosition);
       
-      if (currentYPosition > bottomY) {
-        bottom = `${currentYPosition - bottomY}px`;
+      if (currentYPosition > (bottomY - element.sticky.marginBottom)) {
+        bottom = `${currentYPosition - (bottomY - element.sticky.marginBottom)}px`;
       }
     }
 
