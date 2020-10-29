@@ -1,5 +1,4 @@
 import merge from "lodash/merge";
-import MagicMemo from "magic-memo";
 
 export type Rect = {
   width: number;
@@ -305,7 +304,7 @@ export default class ScrollMaster {
     
     
     const stickyContainer = this.getStickyContainer(element);
-    let bottom = "0px";
+    let bottom = `${element.sticky.marginBottom}px`;
     if (stickyContainer) {
       const stickyContainerBox = this.getRectangle(stickyContainer);
       const elementBox = this.getRectangle(element);
@@ -313,9 +312,12 @@ export default class ScrollMaster {
       const bottomY = stickyContainerBox.top + stickyContainerBox.height;
       const currentYPosition = Math.ceil(window.scrollY) + window.innerHeight;
       
+      // If we run too far off the bottom of the page
       if (currentYPosition > (bottomY - element.sticky.marginBottom)) {
         bottom = `${currentYPosition - (bottomY - element.sticky.marginBottom)}px`;
       }
+
+      // Before we get to the 
     }
 
     this.css(element, { position: "fixed", bottom });
@@ -530,7 +532,7 @@ export default class ScrollMaster {
       (element: StickyElement): void;
       (arg0: any): void;
     }
-  ) {
+  ): void {
     for (let i = 0, len = array.length; i < len; i++) {
       callback(array[i]);
     }
@@ -554,7 +556,7 @@ export default class ScrollMaster {
       height?: string;
       hasOwnProperty?: any;
     }
-  ) {
+  ): void {
     for (const property in properties) {
       if (properties.hasOwnProperty(property) && element) {
         // @ts-expect-error
