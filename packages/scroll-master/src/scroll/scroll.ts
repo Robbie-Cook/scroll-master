@@ -280,8 +280,10 @@ export default class ScrollMaster {
    */
   private initPosition(element: StickyElement): void {
     if (!element.sticky.active) {
+      element.classList.remove(element.sticky.stickyClass);
       return;
     }
+    element.classList.add(element.sticky.stickyClass);
 
     if (!element.sticky.rect.width) {
       element.sticky.rect = this.getRectangle(element);
@@ -301,23 +303,48 @@ export default class ScrollMaster {
    */
   private setStickyBottomPosition(element: StickyElement): void {
     this.initPosition(element);
-    
-    
+
     const stickyContainer = this.getStickyContainer(element);
     let bottom = `${element.sticky.marginBottom}px`;
+
+    element.classList.remove(element.sticky.stickyClass);
+
+    // Logic if we have a container
     if (stickyContainer) {
       const stickyContainerBox = this.getRectangle(stickyContainer);
       const elementBox = this.getRectangle(element);
 
-      const bottomY = stickyContainerBox.top + stickyContainerBox.height;
-      const currentYPosition = Math.ceil(window.scrollY) + window.innerHeight;
-      
-      // If we run too far off the bottom of the page
-      if (currentYPosition > (bottomY - element.sticky.marginBottom)) {
-        bottom = `${currentYPosition - (bottomY - element.sticky.marginBottom)}px`;
+      const bottomOfStickyContainer =
+        stickyContainerBox.top + stickyContainerBox.height;
+      const currentYBottom = Math.ceil(window.scrollY) + window.innerHeight;
+
+      // If container not visible, should be hidden
+      if (currentYBottom < stickyContainerBox.top + elementBox.height) {
+        this.css(element, { display: "none" });
+      } else if (
+        currentYBottom >
+        bottomOfStickyContainer - element.sticky.marginBottom
+      ) {
+        // After the bottom of container comes into view
+
+        bottom = `${
+          currentYBottom -
+          (bottomOfStickyContainer - element.sticky.marginBottom)
+        }px`;
+        element.style.removeProperty("display");
+        this.css(element, { position: "fixed", bottom });
+      } else {
+        this.css(element, { position: "fixed", bottom: "0px" });
+        element.style.removeProperty("display");
       }
 
-      // Before we get to the 
+      // // Once container comes into view
+      // if (window.scrollY < stickyContainerBox.top + element.sticky.marginTop) {
+      //   // this.css(element, { display: "none" });
+      // } else if (!element.classList.contains(element.sticky.stickyClass)) {
+      //   element.classList.add(element.sticky.stickyClass);
+      //   element.style.removeProperty("display");
+      // }
     }
 
     this.css(element, { position: "fixed", bottom });
