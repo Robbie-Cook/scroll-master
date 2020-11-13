@@ -1,9 +1,9 @@
 const path = require("path");
 
 module.exports = {
-  entry: path.resolve(__dirname, "./src/index.ts"),
+  entry: path.resolve(__dirname, "src/index.ts"),
   output: {
-    path: path.resolve(__dirname, "./dist"),
+    path: path.resolve(__dirname, "umd"),
     filename: "index.js",
     libraryTarget: "umd",
     library: "ScrollMaster",
@@ -58,9 +58,5 @@ module.exports = {
     ],
   },
 
-  // externals: {
-  //   'react': 'react', // Case matters here
-  //   'react-dom' : 'react-dom' // Case matters here
-  // },
   plugins: [],
 };
