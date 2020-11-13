@@ -51,7 +51,7 @@ ScrollMaster('.selector');
 ### HTML
 
 ```html
-<script src="https://unpkg.com/scroll-master@latest/dist/index.js">
+<script src="https://unpkg.com/scroll-master@latest/umd/index.js">
 ```
 
 then
