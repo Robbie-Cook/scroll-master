@@ -1,4 +1,3 @@
-const nodeExternals = require("webpack-node-externals");
 const path = require("path");
 
 module.exports = {
@@ -63,6 +62,5 @@ module.exports = {
   //   'react': 'react', // Case matters here
   //   'react-dom' : 'react-dom' // Case matters here
   // },
-  externals: [nodeExternals()],
   plugins: [],
 };
