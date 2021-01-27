@@ -1,7 +1,0 @@
-{
-  "packages": [
-    "packages/scroll-master",
-    "packages/test"
-  ],
-  "version": "0.3.1"
-}
