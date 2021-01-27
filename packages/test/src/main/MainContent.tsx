@@ -24,10 +24,26 @@ const MainContent: React.FC<MainContentProps> = (props) => {
         height="30"
         title="GitHub"
       ></iframe>
-      <h2>
-        A better `position: sticky`
-      </h2>
-      <h4><a href="https://github.com/Robbie-Cook/scroll-master/tree/master/packages/test">Code for this example</a></h4>
+      <h2>A better `position: sticky`</h2>
+
+      <h2>Usage</h2>
+      <h3>Import</h3>
+
+      <p>
+        <code>import ScrollMaster from "scroll-master";</code>
+        or
+        <code>
+          const &#123; default: ScrollMaster &#125; = require("scroll-master");
+        </code>
+        then, you can call scroll master to keep your item in view
+        <code>ScrollMaster('.selector');</code>
+      </p>
+
+      <h4>
+        <a href="https://github.com/Robbie-Cook/scroll-master/tree/master/packages/test">
+          Code for this example
+        </a>
+      </h4>
       <p>
         This project was forked from{" "}
         <a href="https://github.com/rgalus/sticky-js">sticky-js</a>, with some

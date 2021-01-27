@@ -1,4 +1,5 @@
 import merge from "lodash/merge";
+import debounce from "lodash/debounce";
 
 export type Rect = {
   width: number;
@@ -82,7 +83,7 @@ export default class ScrollMaster {
 
     this.updateScrollTopPosition();
     window.addEventListener("load", this.updateScrollTopPosition);
-    window.addEventListener("scroll", this.updateScrollTopPosition);
+    window.addEventListener("scroll", this.updateScrollTopPosition, true);
 
     this.run();
   }
@@ -251,8 +252,8 @@ export default class ScrollMaster {
    * @param element - Element for which scroll events are initialised
    */
   initScrollEvents(element: StickyElement) {
-    element.sticky.scrollListener = () => this.onScrollEvents(element);
-    window.addEventListener("scroll", element.sticky.scrollListener);
+    element.sticky.scrollListener = debounce(() => this.onScrollEvents(element), 300);
+    window.addEventListener("scroll", element.sticky.scrollListener, true);
   }
 
   /**
@@ -261,7 +262,7 @@ export default class ScrollMaster {
    * @param element - Element from which listener is deleted
    */
   destroyScrollEvents(element: StickyElement) {
-    window.removeEventListener("scroll", element.sticky.scrollListener);
+    window.removeEventListener("scroll", element.sticky.scrollListener, true);
   }
 
   /**
