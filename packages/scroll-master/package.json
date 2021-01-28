@@ -1,6 +1,6 @@
 {
   "name": "scroll-master",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "A package to help fix items in a scroll container",
   "main": "dist/index.js",
   "scripts": {
@@ -11,7 +11,9 @@
     "preversion": "npm run build"
   },
   "release": {
-    "branches": ["main"],
+    "branches": [
+      "main"
+    ],
     "plugins": [
       "@semantic-release/commit-analyzer",
       "@semantic-release/release-notes-generator",
