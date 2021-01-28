@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "tsc",
+    "start": "tsc --watch",
     "build": "tsc && webpack --config webpack.umd.config.js",
     "prepublishOnly": "npm run build",
     "preversion": "npm run build"
