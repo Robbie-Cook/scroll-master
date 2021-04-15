@@ -45,7 +45,7 @@ then, you can call scroll master to keep your item in view
 
 
 ```typescript
-ScrollMaster('.selector');
+new ScrollMaster('.selector');
 ```
 
 ### HTML
