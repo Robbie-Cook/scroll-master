@@ -1,6 +1,6 @@
 {
   "name": "scroll-master",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A package to help fix items in a scroll container",
   "main": "dist/index.js",
   "scripts": {
