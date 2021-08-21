@@ -46,8 +46,11 @@ export default class ScrollMaster {
     this.updateScrollTopPosition = this.updateScrollTopPosition.bind(this);
 
     this.updateScrollTopPosition();
-    window.addEventListener("load", this.updateScrollTopPosition);
-    window.addEventListener("scroll", this.updateScrollTopPosition);
+
+    if (typeof window !== "undefined") {
+      window.addEventListener("load", this.updateScrollTopPosition);
+      window.addEventListener("scroll", this.updateScrollTopPosition);
+    }
 
     this.run();
   }
@@ -171,7 +174,9 @@ export default class ScrollMaster {
    */
   initResizeEvents(element: StickyElement) {
     element.sticky.resizeListener = () => this.onResizeEvents(element);
-    window.addEventListener("resize", element.sticky.resizeListener);
+    if (typeof window !== "undefined") {
+      window.addEventListener("resize", element.sticky.resizeListener);
+    }
   }
 
   /**
@@ -180,7 +185,9 @@ export default class ScrollMaster {
    * @param {node} element - Element from which listener is deleted
    */
   destroyResizeEvents(element: StickyElement) {
-    window.removeEventListener("resize", element.sticky.resizeListener);
+    if (typeof window !== "undefined") {
+      window.removeEventListener("resize", element.sticky.resizeListener);
+    }
   }
 
   /**
@@ -221,7 +228,9 @@ export default class ScrollMaster {
    */
   initScrollEvents(element: StickyElement) {
     element.sticky.scrollListener = () => this.onScrollEvents(element);
-    window.addEventListener("scroll", element.sticky.scrollListener);
+    if (typeof window !== "undefined") {
+      window.addEventListener("scroll", element.sticky.scrollListener);
+    }
   }
 
   /**
@@ -230,7 +239,9 @@ export default class ScrollMaster {
    * @param {node} element - Element from which listener is deleted
    */
   destroyScrollEvents(element: StickyElement) {
-    window.removeEventListener("scroll", element.sticky.scrollListener);
+    if (typeof window !== "undefined") {
+      window.removeEventListener("scroll", element.sticky.scrollListener);
+    }
   }
 
   /**
@@ -355,8 +366,10 @@ export default class ScrollMaster {
    * @function
    */
   destroy() {
-    window.removeEventListener("load", this.updateScrollTopPosition);
-    window.removeEventListener("scroll", this.updateScrollTopPosition);
+    if (typeof window !== "undefined") {
+      window.removeEventListener("load", this.updateScrollTopPosition);
+      window.removeEventListener("scroll", this.updateScrollTopPosition);
+    }
 
     this.forEach(this.elements, (element: StickyElement) => {
       this.destroyResizeEvents(element);
@@ -426,16 +439,18 @@ export default class ScrollMaster {
    * @return {object}
    */
   getViewportSize() {
-    return {
-      width: Math.max(
-        document.documentElement.clientWidth,
-        window.innerWidth || 0
-      ),
-      height: Math.max(
-        document.documentElement.clientHeight,
-        window.innerHeight || 0
-      ),
-    };
+    if (typeof window !== "undefined") {
+      return {
+        width: Math.max(
+          document.documentElement.clientWidth,
+          window.innerWidth || 0
+        ),
+        height: Math.max(
+          document.documentElement.clientHeight,
+          window.innerHeight || 0
+        ),
+      };
+    }
   }
 
   /**
@@ -444,9 +459,11 @@ export default class ScrollMaster {
    * @return {number}
    */
   updateScrollTopPosition() {
-    this.scrollTop =
-      (window.pageYOffset || document.body.scrollTop) -
-        (document.body.clientTop || 0) || 0;
+    if (typeof window !== "undefined") {
+      this.scrollTop =
+        (window.pageYOffset || document.body.scrollTop) -
+          (document.body.clientTop || 0) || 0;
+    }
   }
 
   /**
