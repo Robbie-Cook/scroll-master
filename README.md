@@ -20,27 +20,27 @@ Code: https://github.com/Robbie-Cook/scroll-master/tree/master/packages/test
 
 ## Docs
 
-See [https://github.com/Robbie-Cook/scroll-master/packages/scroll-master/README.md](here) for usage instructions
+###  ES6 / CommonJS
 
-## Author
+```typescript
+import ScrollMaster from "scroll-master";
+```
 
-👤 **Robbie Cook <robbie@robbie.pw>**
+or
 
-* Website: robbie.pw
-* Github: [@Robbie-Cook](https://github.com/Robbie-Cook)
+```typescript
+const { default: ScrollMaster } = require("scroll-master");
+```
+then, you can call scroll master to keep your item in view
 
-## 🤝 Contributing
+```typescript
+new ScrollMaster('.selector');
+```
 
-Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/Robbie-Cook/scroll-master/issues). You can also take a look at the [contributing guide](https://github.com/Robbie-Cook/scroll-master/blob/master/CONTRIBUTING.md).
-
-## Show your support
-
-Give a ⭐️ if this project helped you!
 
 ## 📝 License
 
-Copyright © 2020 [Robbie Cook <robbie@robbie.pw>](https://github.com/Robbie-Cook).<br />
+Copyright © 2021 [Robbie Cook <robbie@robbie.pw>](https://github.com/Robbie-Cook).<br />
 This project is [MIT](https://github.com/Robbie-Cook/scroll-master/blob/master/LICENSE) licensed.
 
 ***
-_This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
