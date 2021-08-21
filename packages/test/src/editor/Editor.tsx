@@ -32,7 +32,7 @@ const Editor: React.FC<LiveEditorProps> = (props) => {
       <LiveProvider code={code} scope={{ Global, css }}>
         <h3>example</h3>
         <LivePreview />
-        <h3>code editor</h3>
+        <h3>Code for this example</h3>
         <LiveEditor />
         <LiveError />
       </LiveProvider>
