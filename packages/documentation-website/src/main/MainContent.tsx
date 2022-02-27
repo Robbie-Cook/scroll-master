@@ -54,13 +54,6 @@ const MainContent: React.FC<MainContentProps> = (props) => {
         E.g., the option to apply no styles, only a class name, so custom styles
         can be applied.
       </p>
-      <p>
-        Options listed{" "}
-        <a href="https://github.com/Robbie-Cook/scroll-master/tree/master/packages/scroll-master#options">
-          here
-        </a>
-        .
-      </p>
       <footer>
         <p>
           Ruler by{" "}
@@ -73,7 +66,10 @@ const MainContent: React.FC<MainContentProps> = (props) => {
           </a>
         </p>
       </footer>
-      <div className="markdown" dangerouslySetInnerHTML={{ __html: marked(Markdown) }}></div>
+      <div
+        className="markdown"
+        dangerouslySetInnerHTML={{ __html: marked(Markdown) }}
+      ></div>
     </section>
   );
 };
