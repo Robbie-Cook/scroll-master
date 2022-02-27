@@ -36,11 +36,3 @@ then, you can call scroll master to keep your item in view
 ```typescript
 new ScrollMaster('.selector');
 ```
-
-
-## 📝 License
-
-Copyright © 2021 [Robbie Cook <robbie@robbie.pw>](https://github.com/Robbie-Cook).<br />
-This project is [MIT](https://github.com/Robbie-Cook/scroll-master/blob/master/LICENSE) licensed.
-
-***
