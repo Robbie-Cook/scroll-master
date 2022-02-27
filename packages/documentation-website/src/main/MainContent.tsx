@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import { css, jsx } from "@emotion/core";
-import React from "react";
+import React, { useEffect } from "react";
+import ScrollMaster from "scroll-master";
 
 /**
  * Interface for MainContent props
@@ -13,10 +14,14 @@ export interface MainContentProps {
  *  A MainContent component.
  */
 const MainContent: React.FC<MainContentProps> = (props) => {
+  useEffect(() => {
+    new ScrollMaster(".scroll-master");
+  }, []);
   return (
     <React.Fragment>
       <h1>Scroll Master</h1>
       <iframe
+        loading="lazy"
         src="https://ghbtns.com/github-btn.html?user=Robbie-Cook&repo=scroll-master&type=star&count=true&size=large"
         frameBorder="0"
         scrolling="0"
@@ -24,10 +29,12 @@ const MainContent: React.FC<MainContentProps> = (props) => {
         height="30"
         title="GitHub"
       ></iframe>
-      <h2>
-        A better `position: sticky`
-      </h2>
-      <h4><a href="https://github.com/Robbie-Cook/scroll-master/tree/master/packages/test">Code for this example</a></h4>
+      <h2>A better `position: sticky`</h2>
+      <h4>
+        <a href="https://github.com/Robbie-Cook/scroll-master/tree/master/packages/test">
+          Code for this example
+        </a>
+      </h4>
       <p>
         This project was forked from{" "}
         <a href="https://github.com/rgalus/sticky-js">sticky-js</a>, with some
@@ -54,9 +61,6 @@ const MainContent: React.FC<MainContentProps> = (props) => {
           >
             ArturArsalanov
           </a>
-        </p>
-        <p>
-          <a href="https://codepen.io/pbweb/pen/grQKEK">CodePen</a>
         </p>
       </footer>
     </React.Fragment>

@@ -10,14 +10,14 @@ import { LiveEditor, LiveError, LivePreview, LiveProvider } from "react-live";
  * Interface for LiveEditor props
  */
 export interface LiveEditorProps {
-  code: string;
+  code?: string;
 }
 
 /**
  *  A LiveEditor component.
  */
 const Editor: React.FC<LiveEditorProps> = (props) => {
-  const code = prettier.format(props.code, {
+  const code = prettier.format(props.code ?? "", {
     parser: "babel",
     plugins: [parser],
   });
@@ -33,7 +33,7 @@ const Editor: React.FC<LiveEditorProps> = (props) => {
         <h3>example</h3>
         <LivePreview />
         <h3>Code for this example</h3>
-        <LiveEditor />
+        {/* <LiveEditor /> */}
         <LiveError />
       </LiveProvider>
     </div>
