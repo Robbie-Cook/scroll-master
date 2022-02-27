@@ -14,13 +14,17 @@ export interface LiveEditorProps {
   codepen?: React.ReactChild;
 }
 
-/**
- *  A Previewer for code
- */
 export const Preview: React.FC<LiveEditorProps> = (props) => {
   return (
     <React.Fragment>
-      <div className="target">{props.children}</div>
+      <div
+        className="target"
+        css={css`
+          text-align: center;
+        `}
+      >
+        {props.children}
+      </div>
 
       <h3>Code for this example</h3>
 

@@ -1,7 +1,12 @@
 /** @jsx jsx */
 import { css, jsx } from "@emotion/core";
+import raw from "raw.macro";
 import React, { useEffect } from "react";
 import ScrollMaster from "scroll-master";
+import { marked } from "marked";
+
+// https://github.com/facebook/create-react-app/issues/3722
+const Markdown = raw("../markdown/intro.md");
 
 /**
  * Interface for MainContent props
@@ -17,8 +22,13 @@ const MainContent: React.FC<MainContentProps> = (props) => {
   useEffect(() => {
     new ScrollMaster(".scroll-master");
   }, []);
+
   return (
-    <React.Fragment>
+    <section
+      css={css`
+        text-align: left;
+      `}
+    >
       <h1>Scroll Master</h1>
       <iframe
         loading="lazy"
@@ -63,7 +73,13 @@ const MainContent: React.FC<MainContentProps> = (props) => {
           </a>
         </p>
       </footer>
-    </React.Fragment>
+      <div
+        css={css`
+          margin-top: 64px;
+        `}
+        dangerouslySetInnerHTML={{ __html: marked(Markdown) }}
+      ></div>
+    </section>
   );
 };
 

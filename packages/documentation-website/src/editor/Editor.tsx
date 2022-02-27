@@ -14,7 +14,7 @@ export interface LiveEditorProps {
 }
 
 /**
- *  A LiveEditor component.
+ *  Legacy LiveEditor component.
  */
 const Editor: React.FC<LiveEditorProps> = (props) => {
   const code = prettier.format(props.code ?? "", {
