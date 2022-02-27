@@ -30,6 +30,7 @@ export default class ScrollMaster {
     this.selector = selector;
     this.elements = [];
 
+    // @ts-ignore
     this.vp = this.getViewportSize();
     this.body = document.querySelector("body");
 
@@ -196,6 +197,7 @@ export default class ScrollMaster {
    * @param {node} element - Element for which event function is fired
    */
   onResizeEvents(element: StickyElement) {
+    // @ts-ignore
     this.vp = this.getViewportSize();
 
     element.sticky.rect = this.getRectangle(element);
