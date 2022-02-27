@@ -71,29 +71,3 @@ data-margin-top | number | 0 | Margin between page and sticky element when scrol
 data-sticky-for | number | 0 | Breakpoint which when is bigger than viewport width, sticky is activated and when is smaller, then sticky is destroyed
 data-sticky-class | string | "stuck" | Class added to sticky element when it is stuck
 data-custom-styles | boolean | false | Whether to remove default styles for sticky element (and only apply classname)
-
-## Author
-
-👤 **Robbie Cook <robbie@robbie.digital>**
-
-- Website: robbie.digital
-- Github: [@Robbie-Cook](https://github.com/Robbie-Cook)
-
-## 🤝 Contributing
-
-Contributions, issues and feature requests are welcome!
-
-## Show your support
-
-Give a ⭐️ if this project helped you!
-
-## 📝 License
-
-Copyright © 2020 [Robbie Cook <robbie@robbie.digital>](https://github.com/Robbie-Cook).<br />
-This project is [MIT](https://github.com/Robbie-Cook/scroll-master/blob/master/LICENSE) licensed.
-
-This project was forked from [sticky-js](https://github.com/rgalus/sticky-js)
-
----
-
-_This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
