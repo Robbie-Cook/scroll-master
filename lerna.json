@@ -1,7 +1,7 @@
 {
   "packages": [
     "packages/scroll-master",
-    "packages/test"
+    "packages/documentation-website"
   ],
   "version": "0.2.2"
 }
