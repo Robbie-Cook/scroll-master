@@ -73,12 +73,7 @@ const MainContent: React.FC<MainContentProps> = (props) => {
           </a>
         </p>
       </footer>
-      <div
-        css={css`
-          margin-top: 64px;
-        `}
-        dangerouslySetInnerHTML={{ __html: marked(Markdown) }}
-      ></div>
+      <div className="markdown" dangerouslySetInnerHTML={{ __html: marked(Markdown) }}></div>
     </section>
   );
 };

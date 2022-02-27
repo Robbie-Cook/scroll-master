@@ -3,6 +3,10 @@
   color: red;
 }
 
+.markdown h2 {
+  margin-top: 64px;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
