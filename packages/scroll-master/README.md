@@ -74,9 +74,9 @@ data-custom-styles | boolean | false | Whether to remove default styles for stic
 
 ## Author
 
-👤 **Robbie Cook <robbie@robbie.pw>**
+👤 **Robbie Cook <robbie@robbie.digital>**
 
-- Website: robbie.pw
+- Website: robbie.digital
 - Github: [@Robbie-Cook](https://github.com/Robbie-Cook)
 
 ## 🤝 Contributing
@@ -89,7 +89,7 @@ Give a ⭐️ if this project helped you!
 
 ## 📝 License
 
-Copyright © 2020 [Robbie Cook <robbie@robbie.pw>](https://github.com/Robbie-Cook).<br />
+Copyright © 2020 [Robbie Cook <robbie@robbie.digital>](https://github.com/Robbie-Cook).<br />
 This project is [MIT](https://github.com/Robbie-Cook/scroll-master/blob/master/LICENSE) licensed.
 
 This project was forked from [sticky-js](https://github.com/rgalus/sticky-js)
