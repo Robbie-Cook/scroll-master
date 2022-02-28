@@ -11,9 +11,15 @@ import Ruler from "./Ruler";
 import BasicExample from "./examples/BasicExample";
 import ViewportExample from "./examples/ViewportExample";
 import CustomStylesExample from "./examples/CustomStylesExample";
-import StickToBottomExample from './examples/StickToBottomExample';
+import StickToBottomExample from "./examples/StickToBottomExample";
+
+import useBreakpoint from "use-breakpoint";
+
+const BREAKPOINTS = { mobile: 0, tablet: 768, desktop: 1280 };
 
 function App() {
+  const { breakpoint } = useBreakpoint(BREAKPOINTS, "mobile");
+
   return (
     <div
       css={css`
@@ -25,28 +31,32 @@ function App() {
       `}
       className="App"
     >
-      <div
-        css={css`
-          position: absolute;
-          top: 500px;
-          left: -457px;
+      {breakpoint !== "mobile" && (
+        <React.Fragment>
+          <div
+            css={css`
+              position: absolute;
+              top: 500px;
+              left: -457px;
 
-          transform: rotate(90deg);
-        `}
-      >
-        <Ruler />
-      </div>
-      <div
-        css={css`
-          position: absolute;
-          top: 1700px;
-          left: -457px;
+              transform: rotate(90deg);
+            `}
+          >
+            <Ruler />
+          </div>
+          <div
+            css={css`
+              position: absolute;
+              top: 1700px;
+              left: -457px;
 
-          transform: rotate(90deg);
-        `}
-      >
-        <Ruler />
-      </div>
+              transform: rotate(90deg);
+            `}
+          >
+            <Ruler />
+          </div>
+        </React.Fragment>
+      )}
       <main>
         <MainContent />
       </main>
