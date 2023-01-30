@@ -14,7 +14,7 @@
 
 > A better `position: sticky`
 
-Website: https://scrollmaster.robbie.digital
+Website: https://scrollmaster.robbie.digital (built on CloudCannon)
 
 Code: https://github.com/Robbie-Cook/scroll-master/tree/master/packages/test
 
