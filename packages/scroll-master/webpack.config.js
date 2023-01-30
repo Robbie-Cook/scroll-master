@@ -11,7 +11,7 @@ module.exports = {
   },
 
   mode: "production",
-  target: "web",
+  target: "node",
 
   // Enable sourcemaps for debugging webpack's output.
   devtool: "source-map",
