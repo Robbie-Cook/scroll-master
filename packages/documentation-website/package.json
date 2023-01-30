@@ -25,7 +25,7 @@
   },
   "scripts": {
     "dev": "SKIP_PREFLIGHT_CHECK=true react-scripts start",
-    "build": "npm i scroll-master@latest && SKIP_PREFLIGHT_CHECK=true react-scripts build",
+    "build": "npm i scroll-master@latest --force && SKIP_PREFLIGHT_CHECK=true react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "preversion": "npm run build"
