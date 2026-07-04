@@ -1,0 +1,7 @@
+name = "scroll-master"
+compatibility_date = "2024-09-23"
+account_id = "32b2e844873976351b5535ef2e4a819e"
+
+[assets]
+directory = "./build"
+not_found_handling = "single-page-application"
